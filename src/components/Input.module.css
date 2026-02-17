@@ -21,9 +21,9 @@
     padding: 8px;
     font-size: 16px;
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 2;
     box-sizing: border-box;
-    padding-inline: 15px;
+    padding-inline: .5rem;
     padding-block: .7rem;
     border: none;
     border-bottom: var(--border-height) solid var(--border-before-color);
@@ -70,12 +70,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: 9px;
-    padding-left: 23px;
+    padding: 8px;
     font-size: 14px;
     pointer-events: none;
     user-select: none;
-    z-index: 0;
+    z-index: 1;
     opacity: .1;
-    color: #eee;
+    color: #9bc5be;
 }
