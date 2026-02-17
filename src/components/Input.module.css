@@ -1,0 +1,81 @@
+.autocompletewrapper {
+    width: 600px;
+    margin: 300px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.inputwrapper {
+    --width-of-input: 350px;
+    --border-height: 3px;
+    --border-before-color: rgba(221, 221, 221, 0.39);
+    --border-after-color: #12dbba;
+    --input-hovered-color: #333;
+    width: var(--width-of-input);
+    position: relative;
+}
+
+
+.input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    z-index: 1;
+    box-sizing: border-box;
+    padding-inline: .5rem;
+    padding-block: .7rem;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+    caret-color: #12dbba;
+    background-color: #09022c;
+    color: #fff;
+}
+
+.inputborder {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.input[placeholder] {
+    font-size: 16px;
+    color: #12dbba;
+}
+
+.input[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent .5s .5s ease;
+    text-indent: -100%;
+    opacity: 1;
+}
+
+.input:hover {
+    background: #09022c;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus~.inputborder {
+    width: 100%;
+}
+
+
+.suggest {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 8px;
+    padding-left: 10px;
+    font-size: 14px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: .1;
+    color: #eee;
+}

@@ -1,33 +1,54 @@
 import { useState } from "react";
+import styles from '../components/Input.module.css'
 import cities from '../cities.json'
-function Input () {
-  const [inputValue, setInputValue] = useState("");
-  // const [cities, setCities] = useState('')
+
+
+
+function Input() {
+  const [userInput, setUserInput] = useState("")
+  const [suggestion, setSuggestion] = useState("")
+
 
   const inputHandler = (e) => {
-    setInputValue(e.target.value);
-    console.log(e.target.value);
-  };
- 
-  const filteredCities = inputValue === "" ? [] : 
-  cities.filter((city) => city.startsWith(inputValue))
-  console.log(filteredCities);
-  
+    const value = e.target.value
+    setUserInput(value)
+
+
+    const match = cities.find((city) => city.toLowerCase().startsWith(value.toLowerCase()) )
+
+    setSuggestion(match && match !== value ? match : '')
+  }
+
+
+  const handleKeyDown = (e) => {
+    if( e.key === 'Tab' && suggestion){
+      e.preventDefault()
+      setUserInput(suggestion)
+      setSuggestion('')
+    }
+  }
+
   return (
-    <div className="input">
-      <label htmlFor="input"></label>
-      <input
-        type="text"
-        id="input"
-        name="field"
-        value={inputValue}
-        onChange={inputHandler}
-      />
-      <div className="">
-       {inputValue ? filteredCities.map((city) => <p key={inputValue}>{city}</p>) : ''}
+    <div className={styles.autocompletewrapper}>
+      <div className={styles.inputwrapper}>
+        <input
+          type="text"
+          name="field"
+          placeholder="Type the city..."
+          autoFocus="on"
+          value={userInput}
+          onChange={inputHandler}
+          onKeyDown={handleKeyDown}
+          className={styles.input}
+        />
+        <span className={styles.inputborder}></span>
+      {
+        suggestion && <div className={styles.suggest}>{suggestion}</div>
+      }
       </div>
+      
     </div>
   );
-};
+}
 
 export default Input;
