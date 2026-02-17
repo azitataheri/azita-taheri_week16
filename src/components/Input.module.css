@@ -18,18 +18,16 @@
 
 .input {
     width: 100%;
-    padding: 8px;
     font-size: 16px;
+    z-index: 1;
     box-sizing: border-box;
-    z-index: 2;
-    box-sizing: border-box;
-    padding-inline: .5rem;
-    padding-block: .7rem;
+    padding: 12px 15px;
     border: none;
     border-bottom: var(--border-height) solid var(--border-before-color);
     caret-color: #12dbba;
     background-color: #09022c;
     color: #fff;
+    font-family: inherit;
 }
 
 .inputborder {
@@ -67,14 +65,19 @@
 
 
 .suggest {
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    padding: 8px;
-    font-size: 14px;
+    inset: 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-family: inherit;
     pointer-events: none;
-    user-select: none;
-    z-index: 1;
+    user-select: auto;
+    z-index: 0;
     opacity: .1;
-    color: #9bc5be;
+    color: #eee;
+    display: flex;
+    align-items: center;
 }
