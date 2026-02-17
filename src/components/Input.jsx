@@ -10,10 +10,19 @@ function Input() {
   const inputHandler = (e) => {
     const value = e.target.value;
     setUserInput(value);
+
+    if (!value.trim()) {
+      setSuggestion("");
+      return;
+    }
+
     const match = cities.find((city) =>
       city.toLowerCase().startsWith(value.toLowerCase()),
     );
-    setSuggestion(match && match !== value ? match : "");
+
+    setSuggestion(
+      match && match.toLowerCase() !== value.toLowerCase() ? match : "",
+    );
   };
 
   const handleKeyDown = (e) => {
